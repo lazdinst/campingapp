@@ -1,25 +1,31 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
-import List from './components/List.jsx';
+import ForestList from './components/ForestList.jsx';
+import ForestListEntry from './components/ForestListEntry.jsx';
+import axios from 'axios';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = { 
-      items: []
+      forests: []
     }
   }
 
   componentDidMount() {
-    this.update();
+    this.getAllForests();
   }
 
   getAllForests() {
-    axios.post('FILL_IN_PATH')
-      .then((forests) => {
+    console.log('CLIENT: Getting All Forests')
+    axios.get('/forests')
+      .then((response) => {
         console.log('SUCCESS: Retrieved Forests!')
-        console.log(forests);
+        console.log(response.data);
+        this.setState({
+          forests: response.data
+        })
       })
       .catch((err)=>{
         console.log(err);
@@ -27,9 +33,11 @@ class App extends React.Component {
   }
 
   render () {
-    return (<div>
-      <h1>Item List</h1>
-      <List items={this.state.items}/>
+    return (
+      <div>
+        <h1>Item List</h1>
+
+        <ForestList forests={this.state.forests}/>
     </div>)
   }
 }
