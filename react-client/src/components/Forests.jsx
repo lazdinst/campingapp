@@ -6,7 +6,6 @@ import ForestList from './ForestList.jsx';
 class Forests extends React.Component {
   constructor(props) {
     super(props);
-    console.log(props)
   }
 
   render() {
