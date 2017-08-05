@@ -34,6 +34,16 @@ var Forest = mongoose.model('Forest', forestSchema);
 //   });
 // })
 
+var saveNewForest = function(forest) {
+  Forest.create(forest, function (err, forest) {
+    if (err) {
+      console.log('ERROR: Not added to database', err);
+    } else {
+      console.log('SUCCESS: ' + forest.name + ' added to Database');
+    }
+  });
+};
+
 var findAll = function(callback) {
   Forest.find({}, function(err, forests) {
     if(err) {
@@ -45,3 +55,4 @@ var findAll = function(callback) {
 };
 
 module.exports.findAll = findAll;
+module.exports.saveNewForest = saveNewForest;

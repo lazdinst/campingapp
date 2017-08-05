@@ -14,12 +14,9 @@ class ForestList extends React.Component {
         {this.props.forests.map((forest, i)=>{
           return <ForestListEntry forest={forest} key={i}/>
         })}
-        
       </div>
     );
   }
 }
 
 export default ForestList;
-
-
