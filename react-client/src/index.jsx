@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom'
 import $ from 'jquery';
 import ForestList from './components/ForestList.jsx';
 import ForestSidebar from './components/ForestSidebar.jsx';
@@ -25,11 +26,23 @@ class App extends React.Component {
     axios.get('/forests')
       .then((response) => {
         console.log('(Client) Success: Retrieved Forests!')
-        console.log(response.data);
         //TODO: Sort response.data by name
+        let forests = repsonse.data.sort(function(a, b) {
+          var nameA = a.name.toUpperCase(); // ignore upper and lowercase
+          var nameB = b.name.toUpperCase(); // ignore upper and lowercase
+          if (nameA < nameB) {
+            return -1;
+          }
+          if (nameA > nameB) {
+            return 1;
+          }
 
+          // names must be equal
+          return 0;
+        });
         this.setState({
-          forests: response.data
+          forests: forests;
+          })
         })
       })
       .catch((err)=>{
@@ -53,22 +66,32 @@ class App extends React.Component {
   render () {
     return (
       <div>
-        <Navbar/>
-        <h1>Item List</h1>
-        <div className='wrapper'>
-          <div className="section group">
-            <div className="col span_1_of_3">
-              This is where the side bar is
-              <ForestSidebar addNewForest={this.addNewForest.bind(this)}/>
-            </div>
-            <div className="col span_2_of_3">
-              <h3>List of National Parks</h3>
-              <ForestList forests={this.state.forests}/>
-            </div>
-          </div>
-        </div>
-    </div>)
+
+      </div>
+    )
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('app'));
+ReactDOM.render(
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
+), document.getElementById('app');
+
+
+//OLD Code: Pre-React Dom
+        // <Navbar/>
+        // <h1>Item List</h1>
+        // <div className='wrapper'>
+        //   <div className="section group">
+        //     <div className="col span_1_of_3">
+        //       This is where the side bar is
+        //       <ForestSidebar addNewForest={this.addNewForest.bind(this)}/>
+        //     </div>
+        //     <div className="col span_2_of_3">
+        //       <h3>List of National Parks</h3>
+        //       <ForestList forests={this.state.forests}/>
+        //     </div>
+        //   </div>
+        // </div>
+

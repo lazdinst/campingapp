@@ -34,7 +34,7 @@ var Forest = mongoose.model('Forest', forestSchema);
 //   });
 // })
 
-var saveNewForest = function(forest) {
+var saveNewForest = (forest) => {
   return Forest.create(forest)
     .then((forest) => {
       console.log('SUCCESS: ' + forest.name + ' added to Database');
@@ -42,7 +42,7 @@ var saveNewForest = function(forest) {
     })
 };
 
-var findAll = function(callback) {
+var findAll = () => {
   return Forest.find()
     .exec();
 };
