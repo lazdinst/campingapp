@@ -1,10 +1,12 @@
 import React from 'react'
-import { render } from 'react-dom'
-import { BrowserRouter } from 'react-router-dom'
-import App from './components/App';
+import ReactDOM from 'react-dom'
+import App from './components/App.jsx';
+import { BrowserRouter as Router} from 'react-router-dom'
+import axios from 'axios';
+import './style.css';
 
-render((
-  <BrowserRouter>
+ReactDOM.render((
+  <Router>
     <App />
-  </BrowserRouter>
-), document.getElementById('app'));
+  </Router>
+), document.getElementById('root'));
