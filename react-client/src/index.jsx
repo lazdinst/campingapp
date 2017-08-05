@@ -21,11 +21,13 @@ class App extends React.Component {
   }
 
   getAllForests() {
-    console.log('CLIENT: Getting All Forests')
+    console.log('(Client) Pending: Getting All Forests')
     axios.get('/forests')
       .then((response) => {
-        console.log('SUCCESS: Retrieved Forests!')
+        console.log('(Client) Success: Retrieved Forests!')
         console.log(response.data);
+        //TODO: Sort response.data by name
+
         this.setState({
           forests: response.data
         })
@@ -36,11 +38,12 @@ class App extends React.Component {
   }
 
   addNewForest(forest) {
-    console.log('PENDING: Adding New Forest', forest);
+    console.log('(Client) Pending: Adding New Forest', forest);
     axios.post('/forests', forest)
       .then((data) => {
-        console.log('SUCCESS: Added New Forest');
+        console.log('(Client) Success: Added New Forest');
         console.log(data);
+        this.getAllForests();
       })
       .catch((err) => {
         console.log(err);

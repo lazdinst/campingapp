@@ -35,24 +35,36 @@ var Forest = mongoose.model('Forest', forestSchema);
 // })
 
 var saveNewForest = function(forest) {
-  Forest.create(forest, function (err, forest) {
-    if (err) {
-      console.log('ERROR: Not added to database', err);
-    } else {
+  return Forest.create(forest)
+    .then((forest) => {
       console.log('SUCCESS: ' + forest.name + ' added to Database');
-    }
-  });
+      return forest;
+    })
 };
 
 var findAll = function(callback) {
-  Forest.find({}, function(err, forests) {
-    if(err) {
-      callback(err, null);
-    } else {
-      callback(null, forests);
-    }
-  });
+  return Forest.find()
+    .exec();
 };
 
 module.exports.findAll = findAll;
 module.exports.saveNewForest = saveNewForest;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
