@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import App from './components/App.jsx';
 import { BrowserRouter as Router} from 'react-router-dom'
 import axios from 'axios';
-import './style.css';
+// import './style.css';
 
 ReactDOM.render((
   <Router>

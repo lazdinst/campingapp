@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
+import ForestReview from './ForestReview.jsx';
 
 class Forest extends React.Component {
   constructor(props) {
@@ -15,8 +16,17 @@ class Forest extends React.Component {
 
   render() {
     let forest = this.getForestInfo()[0];
+    console.log(forest);
+    if(forest.reviews) {
+      var reviews = forest.reviews.map((review, i) => {
+        return <ForestReview review={review} key={i} />
+      });
+    }
+    if(reviews) {
+      console.log('Hello')
+    }
     return(
-      <div>
+      <div className="container-fluid">
         <div className="section group">
           <h3>{forest.name}</h3>
           <div className="col span_1_of_3">
@@ -26,6 +36,7 @@ class Forest extends React.Component {
             <div>{forest.description}</div>
             <a href={forest.usfs}>USFS Official Page</a>
           </div>
+          {reviews}
         </div>
         <Link to='/forests'>Back</Link>
       </div>

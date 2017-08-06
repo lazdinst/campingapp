@@ -1,5 +1,6 @@
 import React from 'react';
 import ForestListEntry from './ForestListEntry.jsx';
+import {Grid, Row, Col} from 'react-bootstrap';
 
 class ForestList extends React.Component {
   constructor(props) {
@@ -13,7 +14,7 @@ class ForestList extends React.Component {
     });
 
     return(
-      <div>
+      <div className="container-fluid">
         {forests}
       </div>
     );

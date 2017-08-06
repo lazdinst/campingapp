@@ -3,36 +3,7 @@ body {
   margin: 0px;
 }
 
-.wrapper {
-  width: 100%;
-  margin-top: 5em;
-  margin-bottom: 0;
-  margin-right: 0;
-  margin-left: 0;
-}
 
-.navbar {
-  background-color: #000;
-  overflow: hidden;
-  background-color: #0c9e48;
-  position: fixed; /* Set the navbar to fixed position */
-  top: 0; /* Position the navbar at the top of the page */
-  width: 100%; /* Full width */
-  height: 75px;
-}
-
-.navbar a {
-    float: left;
-    display: block;
-    color: #f2f2f2;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
-
-.navbar li {
-    display: inline;
-}
 
 .avatar {
   width: 75%;

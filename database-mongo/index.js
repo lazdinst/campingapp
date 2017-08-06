@@ -17,7 +17,8 @@ var forestSchema = mongoose.Schema({
   name: { type: String, unique: true },
   image: String,
   description: String,
-  usfs: String
+  usfs: String,
+  reviews: Array
 });
 
 var Forest = mongoose.model('Forest', forestSchema);
