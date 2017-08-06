@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 import ForestReview from './ForestReview.jsx';
+import ForestForm from './ForestForm.jsx';
+import {Button, ButtonGroup, Glyphicon} from 'react-bootstrap'
 
 class Forest extends React.Component {
   constructor(props) {
@@ -26,19 +28,24 @@ class Forest extends React.Component {
       console.log('Hello')
     }
     return(
-      <div className="container-fluid">
-        <div className="section group">
-          <h3>{forest.name}</h3>
-          <div className="col span_1_of_3">
-            <img className="avatar" src={forest.image}/>
+      <div className="container">
+        <div className="row">
+          <div className="col-md-6 col-md-offset-3">
+              <h3>{forest.name}</h3>
+              <img className="avatar" src={forest.image}/>
+              <div>{forest.description}</div>
+              <Button href={forest.usfs}><Glyphicon glyph="info-sign" /></Button>
+              <hr />
+              <div>
+                <ForestForm />
+              </div>
+              <hr />
+              <div id='review'>
+                {reviews}
+              </div>
+            <Link to='/forests'>Back</Link>
           </div>
-          <div className="col span_2_of_3">
-            <div>{forest.description}</div>
-            <a href={forest.usfs}>USFS Official Page</a>
-          </div>
-          {reviews}
         </div>
-        <Link to='/forests'>Back</Link>
       </div>
     );
   }

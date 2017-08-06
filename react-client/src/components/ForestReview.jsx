@@ -13,16 +13,14 @@ class ForestReview extends React.Component {
     }
   }
 
-  generateStars () {
-    console.log('Rating:', this.props.review.rating)
-    // var rating = this.props.review.rating;
-    // return ((rating) => {
-    //   var stars 
-    //   for(var i = 0; i < rating; i++){
-    //     stars.push(<Glyphicon glyph="star" />);
-    //   }
-    //   return stars;
-    // });
+  generateStars (review) {
+    var stars = [];
+    console.log('Rating:', review.rating)
+    var rating = this.props.review.rating;
+    for(var i = 0; i < rating; i++) {
+      stars.push(<Glyphicon glyph="star" key={i}/>);
+    }
+    return stars;
   }
 
   render() {
@@ -33,7 +31,7 @@ class ForestReview extends React.Component {
     } else {
       var imgsrc = 'https://pbs.twimg.com/profile_images/716487122224439296/HWPluyjs.jpg';
     }
-    //generateStars();
+    var stars = this.generateStars(this.props.review);
 
     return(
       <Media>
@@ -41,10 +39,13 @@ class ForestReview extends React.Component {
           <img width={64} height={64} src={imgsrc} alt={this.props.review.reviewer}/>
         </Media.Left>
         <Media.Body>
-          <Media.Heading>{this.props.review.title}</Media.Heading>
+          <Media.Heading>
+          <div>{this.props.review.title} </div>
+          <div><i>{this.props.review.reviewer}</i></div>
+          </Media.Heading>
           <Well bsSize="small">{this.props.review.review}</Well>
+          <h5>Rating: {stars}</h5>
         </Media.Body>
-          {this.props.review.rating}
       </Media>
     );
   }

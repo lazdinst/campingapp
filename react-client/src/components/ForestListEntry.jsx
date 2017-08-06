@@ -18,7 +18,7 @@ class ForestListEntry extends React.Component {
           <LinkContainer to={`/forests/${forest._id}`}>
             <Button><Glyphicon glyph="heart" /></Button>
           </LinkContainer>
-          <LinkContainer to={`/forests/${forest._id}`}>
+          <LinkContainer to={`/forests/${forest._id}#review`}>
             <Button><Glyphicon glyph="comment" /></Button>
           </LinkContainer>
           <Button href={this.props.forest.usfs}><Glyphicon glyph="info-sign" /></Button>
