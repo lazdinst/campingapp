@@ -27,6 +27,7 @@ class NewForest extends React.Component {
       redirect:true
     })
     this.props.addNewForest(this.state.newForest)
+    this.props.getAllForests();
   }
 
   validateUrl(value) {
@@ -35,7 +36,7 @@ class NewForest extends React.Component {
 
   render() {
     if(this.state.redirect) {
-      return <Redirect to='/'/>
+      return <Redirect to='/forests'/>
     }
     return(
       <div>

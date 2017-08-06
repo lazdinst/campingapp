@@ -17,6 +17,20 @@ class App extends React.Component {
     this.getAllForests();
   }
 
+  sortForests(forests) {
+    forests.sort(function(a, b) {
+      var nameA = a.name.toUpperCase(); // ignore upper and lowercase
+      var nameB = b.name.toUpperCase(); // ignore upper and lowercase
+      if (nameA < nameB) {
+        return -1;
+      }
+      if (nameA > nameB) {
+        return 1;
+      }
+      return 0;
+    });
+  }
+
   getAllForests() {
     console.log('(Client) Pending: Getting All Forests')
     axios.get('/forests')
@@ -24,7 +38,8 @@ class App extends React.Component {
         console.log('(Client) Success: Retrieved Forests!')
         console.log(response.data);
         //TODO: Sort response.data by name
-
+        let forests = this.sortForests(response.data);
+        console.log(forests)
         this.setState({
           forests: response.data
 
