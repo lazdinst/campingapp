@@ -27,7 +27,7 @@ class App extends React.Component {
         this.setState({
           forests: response.data
         })
-        console.log('Forest State Updated!')
+        console.log('Forest State')
       })
       .catch((err)=>{
         console.log(err);

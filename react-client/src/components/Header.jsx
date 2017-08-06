@@ -15,7 +15,7 @@ class Header extends React.Component {
             <li><Link to='/'>Home</Link></li>
             <li><Link to='/forests'>Forests</Link></li>
             <li><Link to='/forests/new'>Add Forest</Link></li>
-            <li><Link to='/schedule'>Schedule</Link></li>
+            <li><Link to='/'></Link></li>
           </ul>
         </nav>
       </header>
