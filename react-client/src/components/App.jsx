@@ -36,8 +36,6 @@ class App extends React.Component {
     axios.get('/forests')
       .then((response) => {
         console.log('(Client) Success: Retrieved Forests!')
-        console.log(response.data);
-        //TODO: Sort response.data by name
         let forests = this.sortForests(response.data);
         console.log(forests)
         this.setState({
