@@ -33,7 +33,7 @@ class App extends React.Component {
 
   getAllForests() {
     console.log('(Client) Pending: Getting All Forests')
-    axios.get('/forests')
+    axios.get('/api/forests')
       .then((response) => {
         console.log('(Client) Success: Retrieved Forests!')
         let forests = this.sortForests(response.data);
@@ -51,7 +51,7 @@ class App extends React.Component {
 
   addNewForest(forest) {
     console.log('(Client) Pending: Adding New Forest', forest);
-    axios.post('/forests', forest)
+    axios.post('/api/forests', forest)
       .then((data) => {
         console.log('(Client) Success: Added New Forest');
         console.log(data);
