@@ -1,4 +1,5 @@
 import React from 'react';
+import { Route, Redirect } from 'react-router'
 import Header from './Header.jsx';
 import Main from './Main.jsx';
 import axios from 'axios';
@@ -8,7 +9,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = { 
-      forests: []
+      forests: [],
     }
   }
 
@@ -26,8 +27,9 @@ class App extends React.Component {
 
         this.setState({
           forests: response.data
+
         })
-        console.log('Forest State')
+        console.log('Forest State');
       })
       .catch((err)=>{
         console.log(err);
@@ -40,7 +42,6 @@ class App extends React.Component {
       .then((data) => {
         console.log('(Client) Success: Added New Forest');
         console.log(data);
-        this.getAllForests();
       })
       .catch((err) => {
         console.log(err);
@@ -54,6 +55,7 @@ class App extends React.Component {
         <Main 
           addNewForest={this.addNewForest.bind(this)} 
           forests={this.state.forests}
+          getAllForests={this.getAllForests.bind(this)}
         />
       </div>
     )

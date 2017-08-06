@@ -23,16 +23,16 @@ var forestSchema = mongoose.Schema({
 var Forest = mongoose.model('Forest', forestSchema);
 
 //ADD EXAMPLE DATA TO MONGO
-// var forests = exampleData.forests;
-// forests.forEach((forest)=>{
-//   Forest.create(forest, function (err, forest) {
-//     if (err) {
-//       console.log('ERROR: Not added to database', err);
-//     } else {
-//       console.log('SUCCESS: ' + forest + ' added to Database');
-//     }
-//   });
-// })
+var forests = exampleData.forests;
+forests.forEach((forest)=>{
+  Forest.create(forest, function (err, forest) {
+    if (err) {
+      console.log('ERROR: Not added to database', err);
+    } else {
+      console.log('SUCCESS: ' + forest + ' added to Database');
+    }
+  });
+})
 
 var saveNewForest = (forest) => {
   return Forest.create(forest)

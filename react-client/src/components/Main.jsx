@@ -20,7 +20,7 @@ class Main extends React.Component {
           />
           <Route 
             path='/forests' 
-            render={(props) => <Forests {...props} forests={this.props.forests}/>}
+            render={(props) => <Forests {...props} forests={this.props.forests} addNewForest={this.props.addNewForest} getAllForests={this.props.getAllForests} />}
           />
         </Switch>
       </main>
