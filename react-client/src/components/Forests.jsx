@@ -9,22 +9,13 @@ class Forests extends React.Component {
   }
 
   render() {
-    //:TODO - Do the mapping here then render as {forests}
-    // let forests = this.props.forests.map((forest, i) => { 
-    //   return <ForestListEntry forest={forest} key={i} />
-    // });
-    // console.log(forests);
-    // this.setState({
-    //   myforests: forests
-    // })
-
     return(
       <Switch>
         <Route 
-          path='/forests' 
+          exact path='/forests' 
           render={(props) => <ForestList {...props} forests={this.props.forests}/>}
         />
-        <Route path='/forests/:number' component={Forest}/>
+        <Route path='/forests/:number' render={(props) => <Forest {...props} forests={this.props.forests}/>}/>
       </Switch>
     );
   }

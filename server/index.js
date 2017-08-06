@@ -48,9 +48,9 @@ app.post('/forests', function (req, res, next) {
 // });
 
 // Always return the main index.html, so react-router render the route in the client
-app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '..', 'react-client', 'dist', 'index.html'));
-});
+// app.get('*', (req, res) => {
+//   res.sendFile(path.resolve(__dirname, '..', 'react-client', 'dist', 'index.html'));
+// });
 
 app.listen(port, function() {
   console.log('listening on port ' + port + '!');

@@ -16,7 +16,8 @@ class ForestSidebar extends React.Component {
 
   handleChange(e) {
     this.setState({
-      newForest: _.extend(this.state.newForest, {[e.target.name]: e.target.value})
+      // newForest: _.extend(this.state.newForest, {[e.target.name]: e.target.value})
+      newForest: Object.assign(this.state.newForest, {[e.target.name]: e.target.value})
     });
   }
 
