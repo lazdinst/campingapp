@@ -34,7 +34,7 @@ class Forest extends React.Component {
               <Button href={forest.usfs}><Glyphicon glyph="info-sign" /></Button>
               <hr />
               <div>
-                <ForestForm forestid={this.props.match.params.number} addNewForestReview={this.props.addNewForestReview}/>
+                <ForestForm forestid={this.props.match.params.number} getAllForests={this.props.getAllForests} addNewForestReview={this.props.addNewForestReview}/>
               </div>
               <hr />
               <div id='review'>

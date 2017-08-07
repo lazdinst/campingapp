@@ -67,6 +67,7 @@ class App extends React.Component {
       .then((data) => {
         console.log('(Client) Success: Added New Forest');
         console.log(data);
+        // this.getAllForests();
       })
       .catch((err) => {
         console.log(err);

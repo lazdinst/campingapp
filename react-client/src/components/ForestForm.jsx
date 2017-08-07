@@ -29,6 +29,7 @@ class ForestForm extends React.Component {
     })
 
     this.props.addNewForestReview(this.state.newReview);
+     this.props.getAllForests();
     // this.props.addNewForest(this.state.newForest)
   }
 
@@ -42,6 +43,16 @@ class ForestForm extends React.Component {
         <div className="form-group">
           <label>Review Title:</label>
           <input name="title" type="text" className="form-control" id="title" placeholder="e.g Great Place for a Tea Party" onChange={this.handleChange.bind(this)}/>
+        </div>
+        <div className="form-group">
+          <label>Rating:</label>
+            <select className="form-control" name="rating" id="rating" onChange={this.handleChange.bind(this)}>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select>
         </div>
         <div className="form-group">
           <label>Review:</label>

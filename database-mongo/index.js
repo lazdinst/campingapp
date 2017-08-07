@@ -48,51 +48,23 @@ var findAll = () => {
     .exec();
 };
 
-var newForestReview = (review) => {
-  console.log(review)
-  // Forest.findById(review.forestid, function (err, found) {
-  //   console.log(found);
-  // });
-
+var newForestReview = (review, callback) => {
   Forest.findOneAndUpdate(
     { _id: review.forestid }, 
     { $push: { reviews: review } }, function(err, doc){
       if(err){
-        console.log(err)
+        console.log('Mongo ERROR: ', err)
       }
-      console.log(doc)
+      console.log('THIS IS WHAT COMES BACK', doc)
+      callback(err, doc)
     }
-  );
+  )
 
-
-  // Forest.update({ _id: review.forestid }, { $push: { reviews: review } }, done)
-  //   .then((review) => {
-  //     return review;
-  //   });
 }
 
 module.exports.newForestReview = newForestReview;
 module.exports.findAll = findAll;
 module.exports.saveNewForest = saveNewForest;
-
-
-// db.students.update(
-//    { _id: 1 },
-//    { $push: { scores: 89 } }
-// )
-
-// db.forests.find({_id: 5987922ab6e41311360dbfab})
-// db.forests.update({_id: 5987922ab6e41311360dbfab}, {$push: {reviews: [{hello: world}]}})
-
-
-
-
-
-
-// findById(5987922ab6e41311360dbfab)
-
-
-
 
 
 
