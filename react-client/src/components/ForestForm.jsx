@@ -5,43 +5,49 @@ class ForestForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      newForest: {
-        name: '',
-        image: '',
-        usfs: '',
-        description: ''
+      newReview: {
+        reviewer: '',
+        title: '',
+        review: '',
+        forestid: ''
       }
     }
   }
 
   handleChange(e) {
-    // this.setState({
-    //   newForest: Object.assign(this.state.newForest, {[e.target.name]: e.target.value})
-    // });
+    this.setState({
+      newReview: Object.assign(this.state.newReview, {[e.target.name]: e.target.value})
+    });
   }
 
   submitReview (e) {
     //TODO: Validate the URL before creating it in the Database
     console.log(e, 'clicked')
+    console.log(this.props.forestid)
+    this.setState({
+      newReview: Object.assign(this.state.newReview, {forestid: this.props.forestid})
+    })
+
+    this.props.addNewForestReview(this.state.newReview);
     // this.props.addNewForest(this.state.newForest)
   }
 
   render() {
     return(
       <div>
-        <div class="form-group">
-          <label for="reviewer">Reviewer:</label>
-          <input name="reviewer" type="text" class="form-control" id="reviewer" placeholder="e.g Ben Frankling" onChange={this.handleChange.bind(this)}/>
+        <div className="form-group">
+          <label>Reviewer:</label>
+          <input name="reviewer" type="text" className="form-control" id="reviewer" placeholder="e.g Ben Franklin" onChange={this.handleChange.bind(this)}/>
         </div>
-        <div class="form-group">
-          <label for="title">Review Title:</label>
-          <input name="title" type="text" class="form-control" id="title" placeholder="e.g Great Place for Hiking" onChange={this.handleChange.bind(this)}/>
+        <div className="form-group">
+          <label>Review Title:</label>
+          <input name="title" type="text" className="form-control" id="title" placeholder="e.g Great Place for a Tea Party" onChange={this.handleChange.bind(this)}/>
         </div>
-        <div class="form-group">
-          <label for="review">Review:</label>
-          <textarea name="review" class="form-control" rows="5" id="review" onChange={this.handleChange.bind(this)}/>
+        <div className="form-group">
+          <label>Review:</label>
+          <textarea name="review" className="form-control" rows="5" id="review" onChange={this.handleChange.bind(this)}/>
         </div>
-        <button onClick={this.submitReview.bind(this)}>Add Forest</button>
+        <button onClick={this.submitReview.bind(this)}>Submit</button>
       </div>
     );
   }

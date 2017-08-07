@@ -34,6 +34,17 @@ app.post('/api/forests', function (req, res, next) {
     });
 });
 
+app.post('/api/forests/review/new', function (req, res, next) {
+  console.log('(Server): Posting new Forest Review')
+  console.log(req.body);
+  mongoHelper.newForestReview(req.body)
+    .then((data) => {
+      res.json(data)
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
 
 // app.post('/forests', function (req, res, next) {
 //   console.log('SERVER: Posting new Forest')

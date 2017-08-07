@@ -61,6 +61,18 @@ class App extends React.Component {
       });
   }
 
+  addNewForestReview(review) {
+    console.log('(Client) Pending: Adding New Forest Review', review);
+    axios.post('/api/forests/review/new', review)
+      .then((data) => {
+        console.log('(Client) Success: Added New Forest');
+        console.log(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
   render() {
     return (
       <div>
@@ -69,6 +81,7 @@ class App extends React.Component {
           addNewForest={this.addNewForest.bind(this)} 
           forests={this.state.forests}
           getAllForests={this.getAllForests.bind(this)}
+          addNewForestReview={this.addNewForestReview.bind(this)}
         />
       </div>
     )

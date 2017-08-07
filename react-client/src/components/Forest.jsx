@@ -24,9 +24,6 @@ class Forest extends React.Component {
         return <ForestReview review={review} key={i} />
       });
     }
-    if(reviews) {
-      console.log('Hello')
-    }
     return(
       <div className="container">
         <div className="row">
@@ -37,7 +34,7 @@ class Forest extends React.Component {
               <Button href={forest.usfs}><Glyphicon glyph="info-sign" /></Button>
               <hr />
               <div>
-                <ForestForm />
+                <ForestForm forestid={this.props.match.params.number} addNewForestReview={this.props.addNewForestReview}/>
               </div>
               <hr />
               <div id='review'>

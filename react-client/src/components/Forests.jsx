@@ -18,7 +18,7 @@ class Forests extends React.Component {
           render={(props) => <ForestList {...props} forests={this.props.forests}/>}
         />
         <Route path='/forests/new' render={(props) => <NewForest {...props} addNewForest={this.props.addNewForest} getAllForests={this.props.getAllForests}/>}/>
-        <Route path='/forests/:number' render={(props) => <Forest {...props} forests={this.props.forests}/>}/>
+        <Route path='/forests/:number' render={(props) => <Forest {...props} forests={this.props.forests} getAllForests={this.props.getAllForests} addNewForestReview={this.props.addNewForestReview}/>}/>
       </Switch>
     );
   }

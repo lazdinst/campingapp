@@ -48,15 +48,42 @@ var findAll = () => {
     .exec();
 };
 
+var newForestReview = (review) => {
+  Forest.findById(review.forestid, function (err, found) {
+    console.log(found);
+  });
+
+  // PersonModel.update(
+  //   { _id: person._id }, 
+  //   { $push: { friends: friend } },
+  //   done
+  // );
+
+  return Forest.update({ _id: review.forestid }, { $push: { reviews: review } }, done)
+    .then((review) => {
+      return review;
+    });
+}
+
+module.exports.newForestReview = newForestReview;
 module.exports.findAll = findAll;
 module.exports.saveNewForest = saveNewForest;
 
 
+// db.students.update(
+//    { _id: 1 },
+//    { $push: { scores: 89 } }
+// )
+
+// db.forests.find({_id: 5987922ab6e41311360dbfab})
+// db.forests.update({_id: 5987922ab6e41311360dbfab}, {$push: {reviews: [{hello: world}]}})
 
 
 
 
 
+
+// findById(5987922ab6e41311360dbfab)
 
 
 
