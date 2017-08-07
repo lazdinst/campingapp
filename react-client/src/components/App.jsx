@@ -67,10 +67,20 @@ class App extends React.Component {
       .then((data) => {
         console.log('(Client) Success: Added New Forest');
         console.log(data);
-        // this.getAllForests();
       })
       .catch((err) => {
         console.log(err);
+      });
+  }
+
+  registerNewUser(user) {
+    console.log('(Client) Registering new user', user);
+    axios.post('/api/register', user)
+      .then((data) => {
+        console.log('(Client) Success! Registering new user');
+      })
+      .catch((err) => {
+        console.log('(Client) Error! Registering new user');
       });
   }
 
@@ -83,6 +93,7 @@ class App extends React.Component {
           forests={this.state.forests}
           getAllForests={this.getAllForests.bind(this)}
           addNewForestReview={this.addNewForestReview.bind(this)}
+          registerNewUser={this.registerNewUser.bind(this)}
         />
       </div>
     )

@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var exampleData = require('../lib/data/forestExampleData.js');
 mongoose.connect('mongodb://localhost/dispersed');
-
+//const passportLocalMongoose = require('passport-local-mongoose');
 var db = mongoose.connection;
 
 db.on('error', function() {
@@ -12,7 +12,30 @@ db.once('open', function() {
   console.log('mongoose connected successfully');
 });
 
-//Define forestSchema
+//|Defining User Schema
+//|
+//| TODO: Is require: false actually needed?
+var userSchema = mongoose.Schema({
+  username: {type: String, unqiue: true},
+  password: String,
+  config: { profilePhoto: String, required: false }
+});
+
+var User = mongoose.model('User', userSchema);
+
+//|Defining Forest Mongo Functions
+//|
+var registerNewUser = (user) => {
+  console.log('(Mongo) Adding' + user.username + ' to Database');
+  return User.create(user)
+    .then((user) => {
+      console.log('(Mongo) Success! Adding ' + user.username + ' to Database');
+      return user;
+    })
+}
+
+//|Defining Forest Schema
+//|
 var forestSchema = mongoose.Schema({
   name: { type: String, unique: true },
   image: String,
@@ -23,18 +46,8 @@ var forestSchema = mongoose.Schema({
 
 var Forest = mongoose.model('Forest', forestSchema);
 
-//ADD EXAMPLE DATA TO MONGO
-// var forests = exampleData.forests;
-// forests.forEach((forest)=>{
-//   Forest.create(forest, function (err, forest) {
-//     if (err) {
-//       console.log('ERROR: Not added to database', err);
-//     } else {
-//       console.log('SUCCESS: ' + forest + ' added to Database');
-//     }
-//   });
-// })
-
+//|Defining Forest Mongo Functions
+//|
 var saveNewForest = (forest) => {
   return Forest.create(forest)
     .then((forest) => {
@@ -60,8 +73,23 @@ var newForestReview = (review, callback) => {
     }
   )
 
+//|Load Example Data
+//|
+
+// var forests = exampleData.forests;
+// forests.forEach((forest)=>{
+//   Forest.create(forest, function (err, forest) {
+//     if (err) {
+//       console.log('ERROR: Not added to database', err);
+//     } else {
+//       console.log('SUCCESS: ' + forest + ' added to Database');
+//     }
+//   });
+// })
+
 }
 
+module.exports.registerNewUser = registerNewUser;
 module.exports.newForestReview = newForestReview;
 module.exports.findAll = findAll;
 module.exports.saveNewForest = saveNewForest;

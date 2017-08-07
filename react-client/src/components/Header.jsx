@@ -20,6 +20,12 @@ class Header extends React.Component {
         </Navbar.Header>
         <Navbar.Collapse>
           <Nav pullRight>
+            <LinkContainer to='/login'>
+              <NavItem>Login</NavItem>
+            </LinkContainer>
+            <LinkContainer to='/signup'>
+              <NavItem>Signup</NavItem>
+            </LinkContainer>
             <LinkContainer to='/forests'>
               <NavItem>Forests</NavItem>
             </LinkContainer>
