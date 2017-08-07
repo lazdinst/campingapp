@@ -1,7 +1,9 @@
 var mongoose = require('mongoose');
+var passportLocalMongoose = require('passport-local-mongoose');
+
 var exampleData = require('../lib/data/forestExampleData.js');
+
 mongoose.connect('mongodb://localhost/dispersed');
-//const passportLocalMongoose = require('passport-local-mongoose');
 var db = mongoose.connection;
 
 db.on('error', function() {
@@ -22,6 +24,7 @@ var userSchema = mongoose.Schema({
 });
 
 var User = mongoose.model('User', userSchema);
+userSchema.plugin(passportLocalMongoose);
 
 //|Defining Forest Mongo Functions
 //|
@@ -89,6 +92,7 @@ var newForestReview = (review, callback) => {
 
 }
 
+module.exports.User = User;
 module.exports.registerNewUser = registerNewUser;
 module.exports.newForestReview = newForestReview;
 module.exports.findAll = findAll;
