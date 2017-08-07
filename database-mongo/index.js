@@ -49,20 +49,26 @@ var findAll = () => {
 };
 
 var newForestReview = (review) => {
-  Forest.findById(review.forestid, function (err, found) {
-    console.log(found);
-  });
+  console.log(review)
+  // Forest.findById(review.forestid, function (err, found) {
+  //   console.log(found);
+  // });
 
-  // PersonModel.update(
-  //   { _id: person._id }, 
-  //   { $push: { friends: friend } },
-  //   done
-  // );
+  Forest.findOneAndUpdate(
+    { _id: review.forestid }, 
+    { $push: { reviews: review } }, function(err, doc){
+      if(err){
+        console.log(err)
+      }
+      console.log(doc)
+    }
+  );
 
-  return Forest.update({ _id: review.forestid }, { $push: { reviews: review } }, done)
-    .then((review) => {
-      return review;
-    });
+
+  // Forest.update({ _id: review.forestid }, { $push: { reviews: review } }, done)
+  //   .then((review) => {
+  //     return review;
+  //   });
 }
 
 module.exports.newForestReview = newForestReview;
